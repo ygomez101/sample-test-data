@@ -121,7 +121,7 @@ for feature in record.features:
             
  Part Three
  
- time kallisto quant -i project/project.idx #Quantification.
+time kallisto quant -i project/project.idx #Quantification of TPM for this transcriptome.
  
 -o results/SRR5660030 -b30 -t2
 
@@ -130,7 +130,7 @@ data/SRR5660030.fastq.gz
 data/SRR5660030.fastq.gz
 
 
-time kallisto quant -I project/project.idx #Quantification.
+time kallisto quant -I project/project.idx #Quantification of TPM for this transcriptome.
 
 -o results/SRR5660033  -b30 -t2
 
@@ -139,7 +139,7 @@ data/SRR5660033.fastq.gz
 data/SRR5660033.fastq.gz
 
 
-time kallisto quant -i project/project.idx #Quantification.
+time kallisto quant -i project/project.idx  #Quantification of TPM for this transcriptome.
 
 -o results/SRR5660044  -b30 -t2
 
@@ -148,7 +148,7 @@ data/SRR5660044.fastq.gz
 data/SRR5660044.fastq.gz
 
 
-time kallisto quant -i project/project.idx #Quantification.
+time kallisto quant -i project/project.idx  #Quantification of TPM for this transcriptome.
 
 -o results/SRR5660045  -b30 -t2
 
