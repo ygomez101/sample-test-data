@@ -192,8 +192,8 @@ print(df_all[['CDS', 'min_TPM', 'max_TPM', 'mean_TPM', 'median_TPM']]) #Prints t
 
 
 #Part Four
-#This part requires the use of R.
-#This is the Table of samples.
+
+#This is the Sleuth package.
 
 SRR5660030 kallisto results/SRR5660030
 
@@ -202,6 +202,21 @@ SRR5660033 kallisto results/SRR5660033
 SRR5660044 kallisto results/SRR5660044
 
 SRR5660045 kallisto results/SRR5660045
+
+#This part requires the use of R.
+library(sleuth) #Loads the 
+stab=read.table("",header=TRUE,stringsAsFactors=FALSE)
+so=sleuth_prep(stab)
+
+so=sleuth_fit(so,~condition,'full')
+so=sleuth_fit(so,~1,'reduced')
+so-sleuth_lrt(so,'reduced','full')
+
+library(dplyr)
+sleuth_table-sleuth_results(so, 'reduced:full','lrt',show_all=FALSE)
+sleuth_significant=dplyr::filter(sleuth_table,qval<=0.05) |>dplyr::arrange(pval)
+head(sleuth_significant,n=10)
+write.table(sleuth_significant, file="results.txt",quote=FALSE,row.names=FALSE)
 
 #Part Five
 
