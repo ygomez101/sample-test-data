@@ -158,6 +158,33 @@ data/SRR5660045.fastq.gz
 
 This part requires python.
 
+import pandas as pd #Use pandas. 
+
+import numpy as np #Tells you to bring NumPy library into the current environment. The np is to shorten NumPy to np.
+
+samples = ['SRR5660030', 'SRR5660033', 'SR5660044', 'SRR5660045'] #List of the different samples.
+
+dfs = [] #Set dfs equal to an empty list. Holds it as a place value.
+
+for s in samples: 
+
+df = pd.read_csv(f'{s}_abundance.tsv', sep='\t') #read the output file abundance.tsv
+
+df = df[['target_id', 'tpm']] #Sets the dataframe equal to the target id and the tpm.
+df = df.rename(columns={'target_id': 'CDS'}) #The columns are specifically the target id and CDS.
+dfs.append(df)#Appends the dataframe.
+
+
+df_all = pd.concat(dfs, axis=1) #The dataframes are concatenated into one.
+
+df_all['min_TPM'] = df_all[samples].min(axis=1) #Calculates the minimum TPM for each CDS.
+df_all['max_TPM'] = df_all[samples].max(axis=1) #Calculates the maximum TPM for each CDS .
+df_all['mean_TPM'] = df_all[samples].mean(axis=1) #Calculates the mean TPM for each CDS. 
+df_all['median_TPM'] = df_all[samples].median(axis=1) #Calculates the median TPM for each CDS.
+
+
+print(df_all[['CDS', 'min_TPM', 'max_TPM', 'mean_TPM', 'median_TPM']]) #Prints the output
+
 
 Part Four
 This part requires the use of R.
