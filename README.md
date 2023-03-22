@@ -34,7 +34,7 @@ fastq-dump -I --split-files SRR5660044 #This converts the file to a paired-end f
 
 fastq-dump -I --split-files SRR5660045 #This converts the file to a paired-end fastq file.
 
-Part Two
+#Part Two
 #This part is in python. It can be run in the terminal as well. To get python simply type python #on the terminal if you are using a mac.
 
 #This particular section of code prints out the protein id along with the sequence. It also prints #out how many CDS there are. Each CDS is numbered.
@@ -119,7 +119,7 @@ for feature in record.features:
 
  kallisto index -i project.idx work.fasta #Makes the index in kallisto.
             
- Part Three
+ #Part Three
  
 time kallisto quant -i project/project.idx #Quantification of TPM for this transcriptome(Donor 1(2dpi) SRA.).
  
@@ -156,7 +156,7 @@ data/SRR5660045.fastq.gz
 
 data/SRR5660045.fastq.gz
 
-This part requires python.
+#This part requires python.
 
 import pandas as pd #Use pandas. 
 
@@ -191,9 +191,9 @@ df_all['median_TPM'] = df_all[samples].median(axis=1) #Calculates the median TPM
 print(df_all[['CDS', 'min_TPM', 'max_TPM', 'mean_TPM', 'median_TPM']]) #Prints the output
 
 
-Part Four
-This part requires the use of R.
-This is the Table of samples.
+#Part Four
+#This part requires the use of R.
+#This is the Table of samples.
 
 SRR5660030 kallisto results/SRR5660030
 
@@ -203,6 +203,6 @@ SRR5660044 kallisto results/SRR5660044
 
 SRR5660045 kallisto results/SRR5660045
 
-Part Five
+#Part Five
 
  
