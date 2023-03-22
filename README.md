@@ -192,7 +192,6 @@ print(df_all[['CDS', 'min_TPM', 'max_TPM', 'mean_TPM', 'median_TPM']]) #Prints t
 
 
 #Part Four
-
 #This is the Sleuth package.
 
 SRR5660030 kallisto results/SRR5660030
@@ -204,20 +203,25 @@ SRR5660044 kallisto results/SRR5660044
 SRR5660045 kallisto results/SRR5660045
 
 #This part requires the use of R.
-library(sleuth) #Loads the sleuth package.
-stab=read.table("",header=TRUE,stringsAsFactors=FALSE)
-so=sleuth_prep(stab)
 
-so=sleuth_fit(so,~condition,'full')
-so=sleuth_fit(so,~1,'reduced')
-so-sleuth_lrt(so,'reduced','full')
+library(sleuth) #Loads the sleuth package. 
 
-library(dplyr)
-sleuth_table-sleuth_results(so, 'reduced:full','lrt',show_all=FALSE)
-sleuth_significant=dplyr::filter(sleuth_table,qval<=0.05) |>dplyr::arrange(pval)
-head(sleuth_significant,n=10)
-write.table(sleuth_significant, file="results.txt",quote=FALSE,row.names=FALSE)
+stab=read.table("sleuth_table.txt",header=TRUE,stringsAsFactors=FALSE)#Read in the table for the sleuth package and kallisto output.
+
+so=sleuth_prep(stab) #Causes an initializatino for the sleuth_prep.
+
+so=sleuth_fit(so,~condition,'full')#The two conditions are being compared to see if a model fits. 
+
+so=sleuth_fit(so,~1,'reduced') ) #The likelihood ratio test is compared to the fit reduced model.
+
+so-sleuth_lrt(so,'reduced','full') #The likelihood ratio test between conditions shows differential expression. Gets the differential expressed genes between 2dpi and 6dpi.
+
+library(dplyr) #Loads the dplyr package.
+
+sleuth_table-sleuth_results(so, 'reduced:full','lrt',show_all=FALSE) #Results are taken from sleuth object.
+
+sleuth_significant=dplyr::filter(sleuth_table,qval<=0.05) |>dplyr::arrange(pval) #Filters out the most significant results (FDR<0.05)
+
+write.table(sleuth_significant, file="results.txt",quote=FALSE,row.names=FALSE) #Writes FDR<0.05 to an output file.
 
 #Part Five
-
- 
