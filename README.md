@@ -120,7 +120,7 @@ for feature in record.features:
  kallisto index -i project.idx work.fasta #Makes the index in kallisto.
             
  #Part Three
- 
+ #Should use kallisto for the part below. 
 time kallisto quant -i project/project.idx #Quantification of TPM for this transcriptome(Donor 1(2dpi) SRA.).
  
 -o results/SRR5660030 -b30 -t2
