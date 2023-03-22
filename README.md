@@ -204,7 +204,7 @@ SRR5660044 kallisto results/SRR5660044
 SRR5660045 kallisto results/SRR5660045
 
 #This part requires the use of R.
-library(sleuth) #Loads the 
+library(sleuth) #Loads the sleuth package.
 stab=read.table("",header=TRUE,stringsAsFactors=FALSE)
 so=sleuth_prep(stab)
 
