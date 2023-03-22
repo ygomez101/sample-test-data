@@ -193,8 +193,15 @@ print(df_all[['CDS', 'min_TPM', 'max_TPM', 'mean_TPM', 'median_TPM']]) #Prints t
 
 Part Four
 This part requires the use of R.
+This is the Table of samples.
 
+SRR5660030 kallisto results/SRR5660030
 
+SRR5660033 kallisto results/SRR5660033
+
+SRR5660044 kallisto results/SRR5660044
+
+SRR5660045 kallisto results/SRR5660045
 
 Part Five
 
